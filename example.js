@@ -15,6 +15,8 @@ function add(){
 
 function tryall() {
     const model = tf.loadLayersModel('model.json');
+    const n = model.predict([0, 0, 0, 0, 0]);
+    console.log(n);
 }
 
 
