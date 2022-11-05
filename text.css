@@ -1,0 +1,25 @@
+.top {
+    background-color: green;
+    color: white;
+    
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+
+.mid {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 10px;
+}
+
+#mychart {
+    width: 100%;
+    height: 500px;
+}
+
+button {
+    margin: 20px;
+}

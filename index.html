@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <title>Example</title>
+        
+          </script>
+        <!-- Chart.js import -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+        <!-- Bootstrap core CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- Bootstrap core JS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+
+        <link rel="stylesheet" href="text.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="example.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+
+
+    </head>
+    <body>
+        <div class="top">
+            <h1>Agricultural Prices Predictor</h1>
+        </div>
+        <div class="mid">
+            <h3>Introduction</h3>
+            <p>This agricultural modeling website can help predict prices of agricultural commodities. 
+                For example, the price of wheat is determined by factors of supply and demand. One study found a strong correlation between these five factors and the price of wheat: </p>
+                <ul>
+                    <li>Wheat yield of bushels per acre</li>
+                    <li>US stocks-to-use ratio</li>
+                    <li>US yearly average inflation rate</li>
+                    <li>The price of crude oil per barrel (WTI-Cushing) adjusted for inflation</li>
+                    <li>ENSO related Oceanic Nino Index </li>
+                </ul>
+                <p>Using these as inputs, a linear regression model can be used to find the price of wheat per bushel.</p>
+                <canvas id="myChart"></canvas>
+                <script>
+                const labels = ['1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'];
+
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                    label: 'Price of Wheat per Bushel',
+                    backgroundColor: 'rgb(255, 0, 0)',
+                    borderColor: 'rgb(255, 0, 0)',
+                    data: [1.54, 1.58, 2.23, 4.51, 4.19, 3.74, 2.88, 2.73, 3.38, 4.25, 4.45, 4.27, 3.94, 3.84, 3.74, 3.28, 2.72, 2.96, 4.17, 4.22, 2.94, 3.77, 3.67, 3.6, 3.97, 5.49, 4.88, 3.71, 3.08, 2.87, 3.3, 3.25, 4.22, 4.03, 3.99, 4.45, 5.38, 9.11, 7.03, 5.24, 7.55, 7.81, 8.95, 8.34, 7.28],
+                    },
+                    {label: 'Predicted Price per Bushel',
+                    backgroundColor: 'rgb(0, 99, 0)',
+                    borderColor: 'rgb(0, 99, 0)',
+                    data: [2.061137662, 1.383330112, 2.984741798, 4.125258752, 3.210296485, 3.991235694, 3.140871787, 3.297392676, 3.53424512, 3.498506499, 4.700981261, 4.742814243, 3.612651716, 5.175581885, 4.657705665, 2.487030089, 1.599267507, 2.838601393, 4.4036804, 4.205426184, 2.937432731, 3.908495108, 4.059789234, 3.74903998, 3.732775004, 4.76455031, 4.519554228, 2.772416408, 3.042142072, 3.270165502, 3.610688686, 3.306355832, 4.485341112, 3.888217539, 4.432404295, 5.591012042, 6.188465383, 7.343173672, 7.663357679, 5.911853576, 7.280536578, 7.546367749, 7.392528915, 7.928411286, 7.553918168],
+                    }]
+                };
+
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        scales: {
+                            y: {
+                                ticks: {
+                                    // Include a dollar sign in the ticks
+                                    callback: function(value, index, ticks) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+                </script>
+
+                  
+                <!--<img src="image2.png" style="width: 100%"> -->
+            <h3>Methods</h3>
+            <p>The equation for this model uses the following variables:</p>
+            <ul>
+                <li>A = Wheat yield of bushels per acre</li>
+                <li>B = US stocks-to-use ratio</li>
+                <li>C = US yearly average inflation rate</li>
+                <li>D = The price of crude oil per barrel (WTI-Cushing) adjusted for inflation</li>
+                <li>E = ENSO related Oceanic Nino Index </li>
+                <li>Y = Price of wheat per bushel</li>
+            </ul>
+            <p>The equation was created using a linear regression model and is given by:</p>
+            <p>Y = 8.463 - 0.109 A - 0.048 B - 0.401 C + 0.067 D - 0.529 E</p>
+            <h3>Calculator</h3>
+            <p>Use this calculator to predict the price of wheat per bushel.</p>
+            <p>A: <input id="firstnumber"></p>
+            <p>B: <input id="secondnumber"></p>
+            <p>C: <input id="thirdnumber"></p>
+            <p>D: <input id="fournumber"></p>
+            <p>E: <input id="fifthnumber"></p>
+            <button onclick="add();">Calculate price</button>
+            <p>Y = $<input id="answer"></p>
+            <h3>Machine Learning</h3>
+            <p>To improve the model, using artifical nueral networks (ANNs) can learn the factors impacting the price beyond the linear regime.
+                The ANN had 3 layers with 32 nodes each. The activation function for each node was relu.
+            </p>
+            <canvas id="myChart2"></canvas>
+                <script>
+                const labels2 = ['1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'];
+
+                const data2 = {
+                    labels: labels2,
+                    datasets: [{
+                    label: 'Price of Wheat per Bushel',
+                    backgroundColor: 'rgb(255, 0, 0)',
+                    borderColor: 'rgb(255, 0, 0)',
+                    data: [1.54, 1.58, 2.23, 4.51, 4.19, 3.74, 2.88, 2.73, 3.38, 4.25, 4.45, 4.27, 3.94, 3.84, 3.74, 3.28, 2.72, 2.96, 4.17, 4.22, 2.94, 3.77, 3.67, 3.6, 3.97, 5.49, 4.88, 3.71, 3.08, 2.87, 3.3, 3.25, 4.22, 4.03, 3.99, 4.45, 5.38, 9.11, 7.03, 5.24, 7.55, 7.81, 8.95, 8.34, 7.28],
+                    },
+                    {label: 'Predicted Price per Bushel',
+                    backgroundColor: 'rgb(0, 99, 0)',
+                    borderColor: 'rgb(0, 99, 0)',
+                    data: [1.4612854, 1.7985096, 2.2940412, 4.838831, 3.4585946, 3.7520077, 2.7635214, 2.791566, 2.993813, 4.151386, 4.5452223, 4.4958777, 4.010403, 4.0025253, 3.813326, 3.3191876, 2.52869, 2.7588117, 3.3976896, 3.5692225, 3.7940836, 3.4564047, 4.045604, 3.6689193, 4.024084, 5.485262, 4.0921245, 3.3805182, 3.0558484, 2.8928256, 4.074987, 3.497107, 3.6119204, 4.470851, 4.4142323, 5.082873, 5.4450955, 8.9152155, 7.4794436, 5.0152564, 7.767827, 7.2367606, 8.738888, 8.689238, 7.062096],
+                    }]
+                };
+
+                const config2 = {
+                    type: 'line',
+                    data: data2,
+                    options: {
+                        scales: {
+                            y: {
+                                ticks: {
+                                    // Include a dollar sign in the ticks
+                                    callback: function(value, index, ticks) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+                const myChart2 = new Chart(
+                    document.getElementById('myChart2'),
+                    config2
+                );
+                </script>
+
+        </div>
+    </body>
+
+    
+</html>
