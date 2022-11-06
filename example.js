@@ -27,7 +27,7 @@ function add2(){
     console.log(inp[0]);
     model.then(function (res) {
 
-        const prediction = res.predict(inp);
+        const prediction = res.predict(tf.tensor(inp));
         console.log(prediction);
     });
     sum = prediction[0][0];
