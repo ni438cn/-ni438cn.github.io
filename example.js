@@ -29,7 +29,7 @@ function add2(){
 
         const prediction = res.predict(tf.tensor(inp));
         console.log(prediction);
-        sum = prediction.array()[0][0];
+        sum = prediction.arraySync()[0][0];
         console.log(sum);
         document.getElementById("answer").value = Math.round(sum *100)/100;
     });
