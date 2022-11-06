@@ -1,0 +1,1 @@
+This is the code for the artificial intelligence and the data used to train it. The artificial neural network was exported from the Google Colab and used in our website.
