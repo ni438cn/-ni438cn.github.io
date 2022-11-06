@@ -12,7 +12,7 @@ Original file is located at
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 # load the dataset
-path = "wheat_model.png.csv"
+path = "wheat_model.png.csv" #or corn.csv, this is just the path to the data
 rr = open(path, "r")
 def divide(st, d):
     li = []

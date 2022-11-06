@@ -20,7 +20,7 @@ function add2(){
     num3 = parseFloat(document.getElementById("num3").value);
     num4 = parseFloat(document.getElementById("num4").value);
     num5 = parseFloat(document.getElementById("num5").value);
-    const model = tf.loadLayersModel('model.json');
+    const model = tf.loadLayersModel('annmodels/model.json');
 
     const inp = [[num1, num2, num4, num5, num3]];
     console.log(inp[0]);
@@ -44,7 +44,7 @@ function add3(){
     num3 = parseFloat(document.getElementById("c").value);
     num4 = parseFloat(document.getElementById("d").value);
     num5 = parseFloat(document.getElementById("e").value);
-    const model = tf.loadLayersModel('model2.json');
+    const model = tf.loadLayersModel('annmodels/model2.json');
 
     const inp = [[num1, num2, num4, num5, num3]];
     console.log(inp[0]);
