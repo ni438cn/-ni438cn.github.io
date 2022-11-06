@@ -1,0 +1,26 @@
+Note: these are current values for 2022
+
+A: 
+47.9
+
+B: 
+30.5
+
+C: 
+8.2
+
+D: 
+92.6
+
+E: 
+-0.9
+
+LR: 5.17
+
+ANN: 7.39
+
+Current: $8.89
+
+Corn current: $5.90
+
+ANN: 5.01
