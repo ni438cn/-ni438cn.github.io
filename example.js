@@ -17,7 +17,7 @@ function tryall() {
     const model = tf.loadLayersModel('model.json');
     model.then(function (res) {
 
-        const prediction = res.predict([0, 0, 0, 0, 0]);
+        const prediction = res.predict([[0, 0, 0, 0, 0]]);
         console.log(prediction);
     });
 
