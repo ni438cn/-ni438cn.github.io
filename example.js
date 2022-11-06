@@ -28,7 +28,8 @@ function add2(){
     model.then(function (res) {
 
         const prediction = res.predict(tf.tensor(inp));
-        console.log(prediction);
+        prediction.print();
+        console.log(prediction.arraySync());
         sum = prediction.arraySync()[0][0];
         console.log(sum);
         document.getElementById("answer").value = Math.round(sum *100)/100;
